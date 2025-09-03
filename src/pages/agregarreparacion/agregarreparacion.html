@@ -1,0 +1,121 @@
+<!--
+  Generated template for the AgregarreparacionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar  hideBackButton="true">-->
+      <ion-navbar>
+    <ion-title>Agregar Reparación</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item-group>
+          <ion-item-divider color="light">Cliente</ion-item-divider>
+          <button ion-button full (click)="goBuscarCliente()">Buscar Cliente</button>
+          <ion-list>
+            <ion-item >
+              <ion-icon name="person" item-start></ion-icon>
+              <ion-label stacked>Nombre *</ion-label>
+              <ion-input type="text"  [(ngModel)]="cliente.nombre"></ion-input>
+            </ion-item>
+
+            <ion-item >
+            
+              <ion-icon name="person" item-start></ion-icon>
+              <ion-label stacked>Teléfono</ion-label>
+              <ion-input type="tel"  [(ngModel)]="cliente.telefono"></ion-input>
+            </ion-item>
+
+            <ion-item >
+              <ion-icon name="person" item-start></ion-icon>
+              <ion-label stacked>Celular</ion-label>
+              <ion-input type="tel"  [(ngModel)]="cliente.celular"></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-item-group>
+      </ion-list>   
+
+      <ion-list>
+          <ion-item-group>
+            <ion-item-divider color="light">Equipo</ion-item-divider>
+            <button ion-button full (click)="goBuscarEquipo()">Buscar Equipo</button>
+            <ion-item >
+              <ion-icon name="person" item-start></ion-icon>
+              <ion-label stacked>Equipo*</ion-label>
+              <ion-input type="text"  [(ngModel)]="equipo.tipo"></ion-input>
+              <!--<ion-searchbar [(ngModel)]="equipoBuscado"
+          
+              (ionInput)="goBuscarEquipoEx($event)"
+              (ionCancel)="goCancelarEquipo($event)"></ion-searchbar>
+                 <ion-list>
+                    <ion-item *ngFor="let equipo of equipos" (onclick)="seleccionadoEquipo(equipo.valor)">
+                      {{ equipo.valor }}
+                    </ion-item>
+                 </ion-list>-->
+            </ion-item>
+  
+            <ion-item >
+              <ion-icon name="person" item-start></ion-icon>
+              <ion-label stacked>Marca*</ion-label>
+              <ion-input type="text"  [(ngModel)]="equipo.marca"></ion-input>
+            </ion-item>
+  
+            <ion-item >
+              <ion-icon name="person" item-start></ion-icon>
+              <ion-label stacked>Modelo*</ion-label>
+              <ion-input type="text"  [(ngModel)]="equipo.modelo"></ion-input>
+            </ion-item>
+          </ion-item-group>
+    </ion-list>    
+    
+    <ion-list>
+        <ion-item-group>
+          <ion-item-divider color="light">Problema del equipo</ion-item-divider>
+          <ion-item >
+              <ion-icon name="person" item-start></ion-icon>
+              <ion-label stacked>Accesorios</ion-label>
+              <ion-input type="text"  [(ngModel)]="accesorios"></ion-input>
+          </ion-item>
+    
+                
+             <ion-item> 
+              <ion-icon name="build" item-start></ion-icon>
+              <ion-label stacked>Falla*</ion-label>
+              <ion-textarea  [(ngModel)]="falla"></ion-textarea>
+            </ion-item>
+    
+            <ion-item> 
+              <ion-icon name="build" item-start></ion-icon>
+              <ion-label stacked>Observaciones</ion-label>
+              <ion-textarea  [(ngModel)]="observaciones"></ion-textarea>
+            </ion-item>
+    
+            <ion-item> 
+              <ion-icon name="build" item-start></ion-icon>
+              <ion-label stacked>Seña</ion-label>
+              <ion-input type="number"  [(ngModel)]="abonado"></ion-input>
+            </ion-item>
+        </ion-item-group>
+  </ion-list>    
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-buttons end>
+
+        <button ion-button icon-end color="royal" (click)="goGuardar()">
+             Guardar
+             <ion-icon name="checkmark-circle"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>

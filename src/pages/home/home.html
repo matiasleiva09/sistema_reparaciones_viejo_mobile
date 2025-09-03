@@ -1,0 +1,43 @@
+
+<ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">Inicio de Sesión</ion-item-divider>
+
+<ion-list>
+  <!-- <ion-item>
+    <ion-label color="primary" stacked>Usuario</ion-label>
+    <ion-input  placeholder="Ingrese usuario"   [(ngModel)]="usuario.nombre" id="usuario"></ion-input>
+  </ion-item> -->
+<br />
+<br />
+  <ion-item> 
+      <ion-icon name="person" item-start></ion-icon>
+      <ion-label stacked>Usuario</ion-label>
+      <ion-input  placeholder="Ingrese usuario"   [(ngModel)]="usuario.nombre" id="usuario"></ion-input>
+  </ion-item>
+
+  <ion-item> 
+      <ion-icon name="key" item-start></ion-icon>
+      <ion-label stacked>Contraseña</ion-label>
+      <ion-input type="password" placeholder="Ingrese contraseña"   [(ngModel)]="usuario.contrasena" id="contraseña"></ion-input>
+  </ion-item>
+
+
+  <!-- <ion-item>
+    <ion-label color="primary" stacked>Contraseña</ion-label>
+    <ion-input type="password" placeholder="Ingrese contraseña"   [(ngModel)]="usuario.contrasena" id="contraseña"></ion-input>
+  </ion-item> -->
+  </ion-list>
+  <button ion-button full  (click)="getLoguin()">INGRESAR</button>
+</ion-item-group>
+</ion-list>
+  <ion-footer>
+      <ion-toolbar>
+          <ion-buttons end (click)="goConfiguracion()">
+              <button ion-button icon-end color="royal">
+                CONFIGURACION
+                <ion-icon name="settings"></ion-icon>
+              </button>
+          </ion-buttons>
+      </ion-toolbar>
+    </ion-footer>

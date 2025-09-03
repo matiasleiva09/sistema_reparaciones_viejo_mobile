@@ -1,0 +1,178 @@
+<!--
+  Generated template for the EditreparacionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nro de Orden {{reparacion.codigo}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+
+        <ion-item *ngIf="!(reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA')"> 
+            <ion-icon name="fastforward" item-start></ion-icon> 
+           <ion-label stacked>Estado</ion-label>
+            <ion-select  [(ngModel)]="reparacion.estado" multiple="false" >
+              <ion-option  *ngFor="let estadocmb of estados" [value]="estadocmb">{{estadocmb}}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item> 
+              <ion-icon name="calendar" item-start></ion-icon>
+              <ion-label stacked>Fecha Entrada</ion-label>
+              <ion-label> {{reparacion.fechaEntrada}} </ion-label>
+            </ion-item>
+            <ion-item (click)="goVerCliente()"> 
+                <ion-icon name="person" item-start></ion-icon>
+                <ion-label stacked>Cliente</ion-label>
+                <ion-label>{{reparacion.cliente.nombre}}, Tel: {{reparacion.cliente.telefono}}, Cel: {{reparacion.cliente.celular}} </ion-label>
+           </ion-item>
+           <ion-item (click)="goVerEquipo()"> 
+              <ion-icon name="laptop" item-start></ion-icon>
+              <ion-label stacked>Equipo</ion-label>
+              <ion-label>{{reparacion.equipo.tipo}}, Marca: {{reparacion.equipo.marca}}, Modelo: {{reparacion.equipo.modelo}} </ion-label>
+         </ion-item>
+
+         <ion-item (click)="goAccesorios()"> 
+            <ion-icon name="laptop" item-start></ion-icon>
+            <ion-label stacked>Accesorios</ion-label>
+            <ion-label>{{reparacion.accesorios}}</ion-label>
+       </ion-item>
+
+       <button ion-item (click)="goFalla()"> 
+          <ion-icon name="laptop" item-start></ion-icon>
+          <ion-label stacked>Falla</ion-label>
+          <ion-label>{{reparacion.falla}}</ion-label>
+       </button>
+
+       <button ion-item (click)="goObservaciones()"> 
+        <ion-icon name="laptop" item-start></ion-icon>
+        <ion-label stacked>Observaciones</ion-label>
+        <ion-label *ngIf="reparacion.observaciones!=null && reparacion.observaciones!=''">{{reparacion.observaciones}}</ion-label>
+        <ion-label *ngIf="reparacion.observaciones==null || reparacion.observaciones==''">S/D</ion-label>
+      </button>
+
+         <ion-item *ngIf="!((reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA') || (reparacion.estado=='TOMADA'))"> 
+            <ion-icon name="build" item-start></ion-icon>
+            <ion-label stacked>Solución</ion-label>
+            <ion-textarea  [(ngModel)]="reparacion.informe"></ion-textarea>
+        </ion-item>
+
+        <ion-item *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'"> 
+            <ion-icon name="build" item-start></ion-icon>
+            <ion-label stacked>Solución</ion-label>
+            <ion-label>{{reparacion.informe}}</ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="!((reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA') || (reparacion.estado=='TOMADA'))"> 
+            <ion-icon name="build" item-start></ion-icon>
+            <ion-label stacked>Interno</ion-label>
+            <ion-textarea  [(ngModel)]="reparacion.informeInterno"></ion-textarea>
+        </ion-item>
+
+        <ion-item *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'">
+            <ion-icon name="build" item-start></ion-icon>
+            <ion-label stacked>Interno</ion-label>
+            <ion-label>{{reparacion.informeInterno}}</ion-label>
+        </ion-item>  
+
+      
+
+        <ion-item *ngIf="reparacion.estado=='ENTREGADA' && estados[0]!='ENTREGADA'">
+                <ion-icon name="person" item-start></ion-icon>
+                <ion-label stacked>Retiró:</ion-label>
+                <ion-input type="text"  [(ngModel)]="reparacion.retiradoPor"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'">
+                <ion-icon name="person" item-start></ion-icon>
+                <ion-label stacked>Retiró:</ion-label>
+                <ion-label stacked>{{reparacion.retiradoPor}}</ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="!((reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA') || (reparacion.estado=='TOMADA'))">
+            <ion-icon name="logo-usd" item-start></ion-icon>
+            <ion-label stacked>Abonado</ion-label>
+            <ion-input type="number"  [(ngModel)]="reparacion.senia" ></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'">
+            <ion-icon name="logo-usd" item-start></ion-icon>
+            <ion-label stacked>Abonado</ion-label>
+            <ion-label>{{reparacion.senia}}</ion-label>
+        </ion-item>
+        
+
+        <ion-item *ngIf="!((reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA') || (reparacion.estado=='TOMADA'))">
+            <ion-icon name="logo-usd" item-start></ion-icon>
+            <ion-label stacked>Monto</ion-label>
+            <ion-input type="number" [(ngModel)]="reparacion.costo"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'">
+            <ion-icon name="logo-usd" item-start></ion-icon>
+            <ion-label stacked>Monto</ion-label>
+            <ion-label>{{reparacion.costo}}</ion-label>
+        </ion-item>
+
+       
+    </ion-list>
+    <button ion-button  full  icon-end (click)="goReImprimir()">
+    RE IMPRIMIR ORDEN
+    <ion-icon name="print"></ion-icon>
+   </button>
+   <button ion-button  full  icon-end color="secondary" (click)="enviarWhatsapp()">
+        MANDAR WHATSAPP
+        <ion-icon name="logo-whatsapp"></ion-icon>
+       </button>
+       <button ion-button  full  icon-end color="dark" (click)="enviarSMS()">
+            MANDAR SMS
+            <ion-icon name="mail"></ion-icon>
+           </button>
+    <!-- <ion-card>
+        
+        <ion-card-content>
+            <p><b>Orden:</b> {{reparacion.codigo}}</p>
+            <p><b>Fecha:</b> {{reparacion.fechaEntrada}}</p>
+            <p><b>Cliente:</b> {{reparacion.cliente.nombre}}, Tel: {{reparacion.cliente.telefono}}, Cel: {{reparacion.cliente.celular}}</p>
+            <p><b>Equipo:</b> {{reparacion.equipo.tipo}}, Marca: {{reparacion.equipo.marca}}, Cel: {{reparacion.equipo.modelo}}</p>
+            <p><b>Accesorios:</b> {{reparacion.accesorios}}</p>
+            <p><b>Falla:</b> {{reparacion.falla}}</p>
+            <p><b>Obs:</b> {{reparacion.observaciones}}</p>
+            <p *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'"><b>Sol:</b> {{reparacion.informe}}</p>
+            <p *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'"><b>Interno:</b> {{reparacion.informeInterno}}</p>
+            <p *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'"><b>Retirado Por:</b> {{reparacion.retiradoPor}}</p>
+            <p *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'"><b>Abonado:</b> {{reparacion.senia}}</p>
+            <p *ngIf="reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA'"><b>Costo Total:</b> {{reparacion.costo}}</p>
+          </ion-card-content>
+      
+      </ion-card> -->
+
+
+  <!-- <ion-card *ngIf="reparacion.estado=='ENTREGADA' && estados[0]!='ENTREGADA'">
+      <ion-card-content >
+          
+      </ion-card-content>
+</ion-card> -->
+
+
+</ion-content>
+
+<ion-footer  *ngIf="!(reparacion.estado=='ENTREGADA' && estados[0]=='ENTREGADA')">
+    <ion-toolbar>
+      <ion-buttons end>
+        <button ion-button icon-end color="royal" (click)="goGuardar()">
+          GUARDAR
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+

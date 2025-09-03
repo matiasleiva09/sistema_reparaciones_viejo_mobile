@@ -1,0 +1,63 @@
+<!--
+  Generated template for the AnotacionesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>anotaciones</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+      <ion-item-group>
+        <ion-item-divider color="light">Cliente/Persona</ion-item-divider>
+        <ion-list>
+          <ion-item >
+            <ion-icon name="person" item-start></ion-icon>
+            <ion-label stacked>Nombre *</ion-label>
+            <ion-input type="text"  [(ngModel)]="anotacion.nombre"></ion-input>
+          </ion-item>
+
+          <ion-item >
+          
+            <ion-icon name="person" item-start></ion-icon>
+            <ion-label stacked>Teléfono</ion-label>
+            <ion-input type="tel"  [(ngModel)]="anotacion.telefono"></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </ion-item-group>
+    </ion-list>   
+
+  
+  <ion-list>
+      <ion-item-group>
+        <ion-item-divider color="light">Descripción</ion-item-divider>
+        <ion-item >
+            <ion-icon name="person" item-start></ion-icon>
+            <ion-label stacked>Descripción</ion-label>
+            <ion-input type="text"  [(ngModel)]="anotacion.descripcion"></ion-input>
+        </ion-item>
+      </ion-item-group>
+</ion-list>    
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons end>
+
+      <button ion-button icon-end color="royal" (click)="goGuardar()">
+           Guardar
+           <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
